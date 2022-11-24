@@ -21,11 +21,9 @@ services:
       - ./../../vendor/locode_db:/locode/db
       - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./healthcheck.sh:/healthcheck.sh
+      - ./cfg:/etc/frostfs/ir
     env_file: [ ".env", ".ir.env", ".int_test.env" ]
-    environment:
-    - NEOFS_IR_WALLET_PATH=/wallet.json
-    - NEOFS_IR_WALLET_ADDRESS=Nhfg3TbpwogLvDGVvAvqyThbsHgoSUKwtn
-    - NEOFS_IR_WALLET_PASSWORD=one
+    command: [ "frostfs-ir", "--config", "/etc/frostfs/ir/config.yml" ]
     healthcheck:
       test: ["CMD-SHELL", "/healthcheck.sh"]
       interval: 2s

@@ -1,0 +1,76 @@
+# Logger section
+logger:
+  level: debug  # Minimum enabled logging level
+
+# Wallet settings
+wallet:
+  path: /wallet.json  # Path to NEP-6 NEO wallet file
+  address: Nhfg3TbpwogLvDGVvAvqyThbsHgoSUKwtn  # Account address in the wallet; ignore to use default address
+  password: one  # Account password in the wallet
+
+# Profiler section
+pprof:
+  enabled: true
+  address: :6060  # Endpoint for application pprof profiling; disabled by default
+  shutdown_timeout: 30s  # Timeout for profiling HTTP server graceful shutdown
+
+# Application metrics section
+prometheus:
+  enabled: true
+  address: :9090  # Endpoint for application prometheus metrics; disabled by default
+  shutdown_timeout: 30s  # Timeout for metrics HTTP server graceful shutdown
+
+# Toggling the sidechain-only mode
+without_mainnet: true
+
+# Neo main chain RPC settings
+mainnet:
+  endpoint:
+    client:  # List of websocket RPC endpoints in mainchain; ignore if mainchain is disabled
+      - address: ws://main-chain:30333/ws
+
+# Neo side chain RPC settings
+morph:
+  endpoint:
+    client:  # List of websocket RPC endpoints in sidechain
+      - address: ws://morph-chain:30333/ws
+  validators:  # List of hex-encoded 33-byte public keys of sidechain validators to vote for at application startup
+    - 02b3622bf4017bdfe317c58aed5f4c753f206b7db896046fa7d774bbc4bf7f8dc2
+
+# Network time settings
+timers:
+  emit: 50  # Number of sidechain blocks between GAS emission cycles; disabled by default
+  stop_estimation:
+    mul: 1  # Multiplier in x/y relation of when to stop basic income estimation within the epoch
+    div: 4  # Divider in x/y relation of when to stop basic income estimation within the epoch
+  collect_basic_income:
+    mul: 1  # Multiplier in x/y relation of when to start basic income asset collection within the epoch
+    div: 2  # Divider in x/y relation of when to start basic income asset collecting within the epoch
+  distribute_basic_income:
+    mul: 3  # Multiplier in x/y relation of when to start basic income asset distribution within the epoch
+    div: 4  # Divider in x/y relation of when to start basic income asset distribution within the epoch
+
+# Storage node GAS emission settings
+emit:
+  storage:
+    amount: 1000000000  # Fixed8 value of sidechain GAS emitted to all storage nodes once per GAS emission cycle; disabled by default
+  
+# Storage node removal settings
+netmap_cleaner:
+  enabled: true  # Enable voting for removing stale storage nodes from network map
+  threshold: 3  # Number of FrostFS epoch without bootstrap request from storage node before it considered stale
+  
+# Audit settings
+audit:
+  pdp:
+    max_sleep_interval: 100ms  # Maximum timeout between object.RangeHash requests to the storage node
+    
+# Settlement settings
+settlement:
+  basic_income_rate: 100000000  # Optional: override basic income rate value from network config; applied only in debug mode
+  audit_fee: 100000  # Optional: override audit fee value from network config; applied only in debug mode
+
+# LOCODE database
+locode:
+  db:
+    path: /locode/db  # Path to UN/LOCODE database file
