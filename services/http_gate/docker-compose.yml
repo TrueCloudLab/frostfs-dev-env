@@ -15,11 +15,11 @@ services:
     volumes:
       - ./wallet.json:/wallet.json
       - ./../../vendor/hosts:/etc/hosts
+      - ./cfg:/etc/frostfs/http
     stop_signal: SIGKILL
     env_file: [ ".env", ".http.env", ".int_test.env" ]
+    command: [ "frostfs-http-gw", "--config", "/etc/frostfs/http/config.yml" ]
     environment:
-      - HTTP_GW_WALLET_PATH=/wallet.json
-      - HTTP_GW_WALLET_PASSPHRASE=one
       - HTTP_GW_RPC_ENDPOINT=http://morph-chain.${LOCAL_DOMAIN}:30333
       - HTTP_GW_PEERS_0_ADDRESS=s01.${LOCAL_DOMAIN}:8080
       - HTTP_GW_PEERS_0_WEIGHT=0.2
