@@ -1,0 +1,81 @@
+# Logger section
+logger:
+  level: debug # Minimum enabled logging level
+
+# Profiler section
+pprof:
+  enabled: true
+  address: :6060  # Server address
+  shutdown_timeout: 15s  # Timeout for profiling HTTP server graceful shutdown
+
+# Application metrics section
+prometheus:
+  enabled: true
+  address: :9090  # Server address
+  shutdown_timeout: 15s  # Timeout for metrics HTTP server graceful shutdown
+
+# Morph section
+morph:
+  dial_timeout: 30s  # Timeout for side chain NEO RPC client connection
+  rpc_endpoint:  # Side chain NEO RPC endpoints
+    - address: ws://morph-chain:30333/ws
+      priority: 1
+
+# Common storage node settings
+node:
+  attribute_0: "User-Agent:FrostFS/0.34"
+  notification:
+    enabled: true  # Turn on object notification service
+    endpoint: "tls://nats.frostfs.devenv:4222"  # Notification server endpoint
+    timeout: "6s"  # Timeout for object notification client connection
+    default_topic: "test"  # Default topic for object notifications if not found in object's meta
+    certificate: "/etc/frostfs-node/nats.tls.cert"  # Path to TLS certificate
+    key: "/etc/frostfs-node/nats.tls.key"  # Path to TLS key
+    ca: "/etc/frostfs-node/nats.ca.crt"  # Path to optional CA certificate
+
+# Tree section
+tree:
+  enabled: true
+
+# Storage engine configuration
+storage:
+  shard:
+    0:
+      writecache:
+        enabled: false
+        path: /storage/wc0  # Write-cache root directory
+
+      metabase:
+        path: /storage/meta0  # Path to the metabase
+
+      blobstor:
+        - type: blobovnicza
+          path: /storage/blobovnicza0  # Blobovnicza root directory
+          depth: 2
+          width: 4
+        - type: fstree
+          path: /storage/fstree0  # FSTree root directory
+          depth: 2
+
+      pilorama:
+        path: /storage/pilorama0  # Path to the pilorama database
+
+    1:
+      writecache:
+        enabled: false
+        path: /storage/wc1  # Write-cache root directory
+
+      metabase:
+        path: /storage/meta1  # Path to the metabase
+
+      blobstor:
+        - type: blobovnicza
+          path: /storage/blobovnicza1  # Blobovnicza root directory
+          depth: 2
+          width: 4
+        - type: fstree
+          path: /storage/fstree1  # FSTree root directory
+          depth: 2
+
+      pilorama:
+        path: /storage/pilorama1  # Path to the pilorama database

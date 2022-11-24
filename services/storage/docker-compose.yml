@@ -23,8 +23,10 @@ services:
       - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
       - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
       - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
+      - ./cfg:/etc/frostfs/storage
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
+    command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
       - NEOFS_NODE_WALLET_PATH=./wallet.json
       - NEOFS_NODE_WALLET_PASSWORD=
@@ -61,8 +63,10 @@ services:
       - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
       - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
       - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
+      - ./cfg:/etc/frostfs/storage
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
+    command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
       - NEOFS_NODE_WALLET_PATH=./wallet.json
       - NEOFS_NODE_WALLET_PASSWORD=
@@ -99,8 +103,10 @@ services:
       - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
       - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
       - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
+      - ./cfg:/etc/frostfs/storage
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
+    command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
       - NEOFS_NODE_WALLET_PATH=./wallet.json
       - NEOFS_NODE_WALLET_PASSWORD=
@@ -138,8 +144,10 @@ services:
       - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
       - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
       - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
+      - ./cfg:/etc/frostfs/storage
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
+    command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
       - NEOFS_NODE_WALLET_PATH=./wallet.json
       - NEOFS_NODE_WALLET_PASSWORD=
