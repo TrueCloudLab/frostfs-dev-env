@@ -1,0 +1,8 @@
+server:
+  # The IP and port to listen on.
+  listen-address: 0.0.0.0:8090
+
+# Wallet settings
+wallet:
+  path: /wallet.json # Path to wallet
+  passphrase: one # Password to decrypt wallet
