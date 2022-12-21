@@ -1,8 +1,8 @@
 # HTTP Protocol gateway
 
-Protocol Gateway to access data in NeoFS using HTTP protocol.
+Protocol Gateway to access data in FrostFS using HTTP protocol.
 
-Source code and more information can be found in [project's GitHub repository](https://github.com/nspcc-dev/neofs-http-gate)
+Source code and more information can be found in [project's GitHub repository](https://github.com/TrueCloudLab/frostfs-http-gate)
 
 ## .env settings
 
@@ -10,10 +10,10 @@ Source code and more information can be found in [project's GitHub repository](h
 
 Image version label to use for containers.
 
-If you want to use locally built image, just set it's label here. Instead of
+If you want to use locally built image, just set its label here. Instead of
 pulling from DockerHub, the local image will be used.
 
-### HTTP_GW_IMAGE=nspccdev/neofs-http-gw
+### HTTP_GW_IMAGE=truecloudlab/frostfs-http-gw
 
 Image label prefix to use for containers.
 
@@ -21,7 +21,7 @@ Image label prefix to use for containers.
 
 - Create a new container
 ```
-$ neofs-cli --rpc-endpoint s01.neofs.devenv:8080 \
+$ frostfs-cli --rpc-endpoint s01.frostfs.devenv:8080 \
             --key wallets/wallet.key \
             container create --basic-acl readonly --await \
             --policy "REP 1 SELECT 1 FROM *"
@@ -32,7 +32,7 @@ container has been persisted on sidechain
 ```
 - Put an object into the newly created container
 ```
-$ neofs-cli --rpc-endpoint s01.neofs.devenv:8080 \
+$ frostfs-cli --rpc-endpoint s01.frostfs.devenv:8080 \
             --key wallets/wallet.key \
             object put --file /tmp/backup.jpeg \
             --cid 4LfREK1cetL4PUji5fqj9SgRTSmaC5jExEDK9HKCDjdP
@@ -40,9 +40,9 @@ $ neofs-cli --rpc-endpoint s01.neofs.devenv:8080 \
   ID: 6EPpYqSFMGWrNLvYE9mNnut1CPKuPBKyi1ixHakzqsSB
   CID: 4LfREK1cetL4PUji5fqj9SgRTSmaC5jExEDK9HKCDjdP
 ```
-- Call `curl -sSI -XGET http://http.neofs.devenv/get/<cid>/<oid>`
+- Call `curl -sSI -XGET http://http.frostfs.devenv/get/<cid>/<oid>`
 ```
-$ curl -sSI -XGET http://http.neofs.devenv/get/4LfREK1cetL4PUji5fqj9SgRTSmaC5jExEDK9HKCDjdP/6EPpYqSFMGWrNLvYE9mNnut1CPKuPBKyi1ixHakzqsSB
+$ curl -sSI -XGET http://http.frostfs.devenv/get/4LfREK1cetL4PUji5fqj9SgRTSmaC5jExEDK9HKCDjdP/6EPpYqSFMGWrNLvYE9mNnut1CPKuPBKyi1ixHakzqsSB
 HTTP/1.1 200 OK
 Date: Thu, 03 Dec 2020 10:34:26 GMT
 Content-Type: image/jpeg

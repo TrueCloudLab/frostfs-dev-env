@@ -1,14 +1,11 @@
 <p align="center">
-<img src="./.github/logo.svg" width="500px" alt="NeoFS">
-</p>
-<p align="center">
-  <a href="https://fs.neo.org">NeoFS</a> local Development and Testing environment
+  <a href="https://frostfs.info">FrostFS</a> local Development and Testing environment
 </p>
 
 ---
 ## Overview
 
-Tools to set up local NeoFS network and N3 privnets. Devenv, for short.
+Tools to set up local FrostFS network and N3 privnets. Devenv, for short.
 
 ## Prerequisites
 
@@ -27,7 +24,7 @@ Make sure you have installed all of the following prerequisites on your machine:
 Clone repo: 
 
 ```
-$ git clone https://github.com/nspcc-dev/neofs-dev-env.git
+$ git clone https://github.com/TrueCloudLab/frostfs-dev-env.git
 ```
 
 Run next commands from project's root:
@@ -42,11 +39,11 @@ been added already, there is no need to run it separately.
 
 ```
 $ make hosts
-192.168.130.10 bastion.neofs.devenv
-192.168.130.50 main-chain.neofs.devenv
-192.168.130.61 ir01.neofs.devenv
+192.168.130.10 bastion.frostfs.devenv
+192.168.130.50 main-chain.frostfs.devenv
+192.168.130.61 ir01.frostfs.devenv
 ...
-192.168.130.74 s04.neofs.devenv
+192.168.130.74 s04.frostfs.devenv
 ```
 
 This command shows addresses and hostnames of components. Add `make hosts`
@@ -58,7 +55,7 @@ $ make up
 ```
 
 When all services are up, you need to make GAS deposit for test wallet to be
-able to pay for NeoFS operations. Test wallet is located in
+able to pay for FrostFS operations. Test wallet is located in
 `wallets/wallet.json` with the corresponding key in `wallets/wallet.key`. The
 password is empty.
 
@@ -68,16 +65,16 @@ password >
 fa6ba62bffb04030d303dcc95bda7413e03aa3c7e6ca9c2f999d65db9ec9b82c
 ```
 
-Also you should add self-signed node (`s04.neofs.devenv`) certificate to trusted
+Also, you should add self-signed node (`s04.frostfs.devenv`) certificate to trusted
 store (default location might be changed using `CA_CERTS_TRUSTED_STORE`
-variable). This step is required for client services (neofs-http-gw,
-neofs-s3-gw) to interact with the node:
+variable). This step is required for client services (frostfs-http-gw,
+frostfs-s3-gw) to interact with the node:
 
 ```
 $ sudo make prepare.storage
 ```
 
-Change NeoFS global configuration values with `make update.*` commands. The
+Change FrostFS global configuration values with `make update.*` commands. The
 password of inner ring wallet is `one`. See examples in `make help`.
 
 ```
@@ -85,7 +82,7 @@ $ make update.epoch_duration val=30
 Changing EpochDuration configration value to 30
 Enter account NNudMSGzEoktFzdYGYoNb3bzHzbmM1genF password > 
 Sent invocation transaction dbb8c1145b6d10f150135630e13bb0dc282023163f5956c6945a60db0cb45cb0
-Updating NeoFS epoch to 2
+Updating FrostFS epoch to 2
 Enter account NNudMSGzEoktFzdYGYoNb3bzHzbmM1genF password > 
 Sent invocation transaction 0e6eb5e190f36332e5e5f4e866c7e100826e285fd949e11c085e15224f343ba6
 ```
@@ -121,9 +118,9 @@ You can find more information on each service in `docs` directory.
 
 Maybe you will find the answer for your question in [F.A.Q.](docs/faq.md)
 
-## Using NeoFS Admin Tool in `dev-env`
+## Using FrostFS Admin Tool in `dev-env`
 
-Devenv supports NeoFS network management via [neofs-adm](https://github.com/nspcc-dev/neofs-node/tree/master/cmd/neofs-adm).
+Devenv supports FrostFS network management via [frostfs-adm](https://github.com/TrueCloudLab/frostfs-node/tree/master/cmd/frostfs-adm).
 `services/ir` contains the Alphabet wallet in a proper format, specify it
 with `--alphabet-wallets` flag.
 

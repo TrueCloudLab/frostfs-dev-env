@@ -1,18 +1,18 @@
-# N3 NeoFS side chain privnet service
+# N3 FrostFS side chain privnet service
 A single-node N3 privnet deployment, running on
-[neo-go](https://github.com/nspcc-dev/neo-go). Represents N3 NeoFS SideChain.
+[neo-go](https://github.com/nspcc-dev/neo-go). Represents N3 FrostFS SideChain.
 
 Contracts deployed:
-- Alphabet (AZ) [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/alphabet)
-- Audit [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/audit)
-- Balance [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/balance)
-- Container [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/container)
-- Netmap [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/netmap)
-- NeoFSID [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/neofsid)
-- Proxy [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/proxy)
-- Reputation [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/reputation)
+- Alphabet (AZ) [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/alphabet)
+- Audit [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/audit)
+- Balance [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/balance)
+- Container [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/container)
+- Netmap [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/netmap)
+- NeoFSID [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/neofsid)
+- Proxy [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/proxy)
+- Reputation [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/reputation)
  
-RPC available at `http://morph-chain.neofs.devenv:30333`.
+RPC available at `http://morph-chain.frostfs.devenv:30333`.
 
 ## .env settings
 
@@ -36,22 +36,22 @@ There is a wallet with GAS that used for contract deployment:
 ```
 $ neo-go wallet nep17 balance \
     -w wallets/wallet.json \
-    -r http://morph-chain.neofs.devenv:30333
+    -r http://morph-chain.frostfs.devenv:30333
 
 Account NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM
 GAS: GasToken (d2a4cff31913016155e38e474a2c06d08be276cf)
         Amount : 189826.0515316
         Updated: 3909
-NEOFS: NeoFS Balance (69550190e740b93f92dbd5dea52246f550391057)
+FROSTFS: FrostFS Balance (69550190e740b93f92dbd5dea52246f550391057)
         Amount : 50
         Updated: 3909
 ```
 
-This way you can also monitor NeoFS internal balance of your account.
+This way you can also monitor FrostFS internal balance of your account.
 
-## NeoFS global config
+## FrostFS global config
 
-NeoFS uses global configuration to store epoch duration, maximum object size, 
+FrostFS uses global configuration to store epoch duration, maximum object size, 
 container fee and other network parameters. Global configuration is stored in
 netmap contract and managed by Inner Ring (Alphabet) nodes.
 
@@ -64,7 +64,7 @@ $ make update.epoch_duration val=30
 Changing EpochDuration configration value to 30
 Enter account NfgHwwTi3wHAS8aFAN243C5vGbkYDpqLHP password > 
 Sent invocation transaction bdc0fa88cd6719ef6df2b9c82de423ddec6141ca24255c2d0072688083b1de9d
-Updating NeoFS epoch to 20
+Updating FrostFS epoch to 20
 Enter account NfgHwwTi3wHAS8aFAN243C5vGbkYDpqLHP password > 
 Sent invocation transaction 12296e1ce24dd6c04edb9c56d0a1d0e26d3226adefb0333c74a28788f44a8d0f
 ```

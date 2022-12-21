@@ -7,7 +7,7 @@ host machine, so all programs running on host can connect to services exposed to
 
 ## .env settings
 
-### LOCAL_DOMAIN=neofs.devenv
+### LOCAL_DOMAIN=frostfs.devenv
 
 Domain to use for all containers exposed to `basenet_internet`.
 
@@ -28,7 +28,7 @@ devenv services.
 Run shell in bastion:
 
 ```
-neofs-dev-env$ docker exec -ti bastion /bin/bash
+frostfs-dev-env$ docker exec -ti bastion /bin/bash
 root@bastion:/# ip a sh
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00

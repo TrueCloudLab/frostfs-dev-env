@@ -4,10 +4,10 @@ A single-node N3 privnet deployment, running on
 [neo-go](https://github.com/nspcc-dev/neo-go). Represents N3 MainNet.
 
 Contracts deployed:
-- NeoFS [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/neofs)
-- Processing [contract](https://github.com/nspcc-dev/neofs-contract/tree/master/processing)
+- FrostFS [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/neofs)
+- Processing [contract](https://github.com/TrueCloudLab/frostfs-contract/tree/master/processing)
 
-RPC available at `http://main-chain.neofs.devenv:30333`.
+RPC available at `http://main-chain.frostfs.devenv:30333`.
 
 ## .env settings
 
@@ -31,7 +31,7 @@ There is a wallet with GAS that used for contract deployment:
 ```
 $ neo-go wallet nep17 balance \
     -w wallets/wallet.json \
-    -r http://main-chain.neofs.devenv:30333 
+    -r http://main-chain.frostfs.devenv:30333 
    
 Account NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM
 GAS: GasToken (d2a4cff31913016155e38e474a2c06d08be276cf)
@@ -40,14 +40,14 @@ GAS: GasToken (d2a4cff31913016155e38e474a2c06d08be276cf)
 ```
 
 If you want to operate in main chain with your personal wallet (e.g. to make 
-a deposit in NeoFS contract), you can transfer GAS from there.
+a deposit in FrostFS contract), you can transfer GAS from there.
 
 1. Create new wallet.
 
 ```
-$ neo-go wallet init -a -w wallets/neofs1.json
+$ neo-go wallet init -a -w wallets/frostfs1.json
 
-Enter the name of the account > neofs1
+Enter the name of the account > frostfs1
 Enter passphrase >
 Confirm passphrase >
 
@@ -57,7 +57,7 @@ Confirm passphrase >
         {
             "address": "NXnzw3J9VvKXjM1BPAJK4QUpTtEQu4TpU6",
 ...
-wallet successfully created, file location is wallets/neofs1.json
+wallet successfully created, file location is wallets/frostfs1.json
 ```
 
 2. Transfer GAS from `wallets/wallet.json`. The password is empty.
@@ -65,7 +65,7 @@ wallet successfully created, file location is wallets/neofs1.json
 ```
 $ neo-go wallet nep17 transfer \
     -w wallets/wallet.json \
-    -r http://main-chain.neofs.devenv:30333 \
+    -r http://main-chain.frostfs.devenv:30333 \
     --from NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM \
     --to NXnzw3J9VvKXjM1BPAJK4QUpTtEQu4TpU6 \
     --amount 50 \
@@ -76,8 +76,8 @@ $ neo-go wallet nep17 transfer \
 
 ```
 $ neo-go wallet nep17 balance \
-    -w wallets/neofs1.json \
-    -r http://main-chain.neofs.devenv:30333
+    -w wallets/frostfs1.json \
+    -r http://main-chain.frostfs.devenv:30333
 
 Account NXnzw3J9VvKXjM1BPAJK4QUpTtEQu4TpU6 
 GAS: GasToken (d2a4cff31913016155e38e474a2c06d08be276cf)
@@ -98,7 +98,7 @@ Claim GAS to consensus node's wallet. Use account that contains NEO tokens.
 ```
 $ neo-go wallet claim \
     -w services/chain/node-wallet.json \
-    -r http://main-chain.neofs.devenv:30333 \
+    -r http://main-chain.frostfs.devenv:30333 \
     -a NfgHwwTi3wHAS8aFAN243C5vGbkYDpqLHP \
 Password >
 70e09bbd55846dcc7cee23905b737c63e5a80d32e387bce108bc6db8e641fb90
@@ -109,17 +109,17 @@ Then you can transfer GAS the same way as it was done in previous section.
 ```
 $ neo-go wallet nep17 transfer \
     -w services/chain/node-wallet.json \
-    -r http://main-chain.neofs.devenv:30333 \
+    -r http://main-chain.frostfs.devenv:30333 \
     --from NfgHwwTi3wHAS8aFAN243C5vGbkYDpqLHP \
     --to NXnzw3J9VvKXjM1BPAJK4QUpTtEQu4TpU6 \
     --amount 50 \
     --token GAS
 ```
 
-## NeoFS GAS deposit
+## FrostFS GAS deposit
 
-NeoFS identifies users by their Neo wallet key pair. To start using NeoFS in
-devenv you need to transfer some GAS to NeoFS contract in main chain.
+FrostFS identifies users by their Neo wallet key pair. To start using FrostFS in
+devenv you need to transfer some GAS to FrostFS contract in main chain.
 
 Invoke `bin/deposit.sh` script by running `make prepare.ir` command to transfer
 50 GAS from account in `wallets/wallet.json` file. Script enters passwords
@@ -136,7 +136,7 @@ Script converts addresses and executes this command:
 ```
 $ neo-go wallet nep17 transfer \
     -w wallets/wallet.json \
-    -r http://main-chain.neofs.devenv:30333 \
+    -r http://main-chain.frostfs.devenv:30333 \
     --from NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM \
     --to NerhjaqJsJt4LxMqUbkkVMpsF2d9TtcpFv \
     --token GAS \
@@ -144,12 +144,12 @@ $ neo-go wallet nep17 transfer \
 ```
 
 You can specify any wallet address scripthash in the transfer's data argument,
-and NeoFS deposit will be transferred to that address.
+and FrostFS deposit will be transferred to that address.
 
 ```
 $ neo-go wallet nep17 transfer \
     -w wallets/wallet.json \
-    -r http://main-chain.neofs.devenv:30333 \
+    -r http://main-chain.frostfs.devenv:30333 \
     --from NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM \
     --to NerhjaqJsJt4LxMqUbkkVMpsF2d9TtcpFv \
     --token GAS \

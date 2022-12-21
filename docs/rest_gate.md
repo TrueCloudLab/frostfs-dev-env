@@ -1,8 +1,8 @@
 # REST Gateway
 
-REST Gateway to access data in NeoFS using REST.
+REST Gateway to access data in FrostFS using REST.
 
-Source code and more information can be found in [project's GitHub repository](https://github.com/nspcc-dev/neofs-rest-gw)
+Source code and more information can be found in [project's GitHub repository](https://github.com/TrueCloudLab/frostfs-rest-gw)
 
 ## .env settings
 
@@ -13,7 +13,7 @@ Image version label to use for containers.
 If you want to use locally built image, just set its label here. 
 Instead of pulling from DockerHub, the local image will be used.
 
-### REST_GW_IMAGE=nspccdev/neofs-rest-gw
+### REST_GW_IMAGE=truecloudlab/frostfs-rest-gw
 
 Image label prefix to use for containers.
 
@@ -22,7 +22,7 @@ Image label prefix to use for containers.
 - List container for specific owner:
 
 ```shell
-$ curl http://rest.neofs.devenv:8090/v1/containers?ownerId=NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM | jq
+$ curl http://rest.frostfs.devenv:8090/v1/containers?ownerId=NbUgTSFvPmsRxmGeWpuuGeJUoRoi6PErcM | jq
 {
   "containers": [
     {
@@ -49,7 +49,7 @@ $ curl http://rest.neofs.devenv:8090/v1/containers?ownerId=NbUgTSFvPmsRxmGeWpuuG
 - Get container info:
 
 ```shell
-$ curl http://rest.neofs.devenv:8090/v1/containers/BKcAvz8awKKy9NGsGKi1Hoxxu9AjTGvjKMNMQamvdLmX | jq
+$ curl http://rest.frostfs.devenv:8090/v1/containers/BKcAvz8awKKy9NGsGKi1Hoxxu9AjTGvjKMNMQamvdLmX | jq
 {
   "attributes": [
     {
@@ -67,4 +67,4 @@ $ curl http://rest.neofs.devenv:8090/v1/containers/BKcAvz8awKKy9NGsGKi1Hoxxu9AjT
 }
 ```
 
-See all available routes http://rest.neofs.devenv:8090/v1/docs
+See all available routes http://rest.frostfs.devenv:8090/v1/docs

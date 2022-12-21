@@ -1,9 +1,9 @@
 # F.A.Q, tips and tricks
 
 
-### How to export private key from Neo wallet for NeoFS use?
+### How to export private key from Neo wallet for FrostFS use?
 
-Private key for usage with NeoFS tools can be extracted from Neo wallet in three
+Private key for usage with FrostFS tools can be extracted from Neo wallet in three
 simple steps.
 
 1. Get the key in WIF format
@@ -17,7 +17,7 @@ KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
 2. Convert form WIF to HEX
 
 ```
-$ neofs-cli util keyer KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
+$ frostfs-cli util keyer KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
 PrivateKey      1dd37fba80fec4e6a6f13fd708d8dcb3b29def768017052f6c930fa1c5d90bbb
 PublicKey       031a6c6fbbdf02ca351745fa86b9ba5a9452d785ac4f7fc2b7548ca2a46c4fcf4a
 WIF             KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
@@ -35,16 +35,16 @@ $ xxd wallets/wallet.key
 00000010: b29d ef76 8017 052f 6c93 0fa1 c5d9 0bbb  ...v.../l.......
 ```
 
-Later you will be able to provide wallet file in neofs-node config.
+Later you will be able to provide wallet file in frostfs-node config.
 
-### How to create Neo wallet JSON file using a NeoFS key file?
+### How to create Neo wallet JSON file using a FrostFS key file?
 
-You will need `neo-go` and `neofs-cli`.
+You will need `neo-go` and `frostfs-cli`.
 
 1. Get the WIF format of the private key
 
 ```
-$ neofs-cli util keyer -key ./services/ir/01.key | grep WIF | awk '{print $NF}' > temp_WIF
+$ frostfs-cli util keyer -key ./services/ir/01.key | grep WIF | awk '{print $NF}' > temp_WIF
 ```
 
 2. Init a new empty Neo wallet

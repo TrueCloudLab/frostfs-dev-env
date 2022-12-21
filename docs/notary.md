@@ -78,4 +78,4 @@ ApplicationConfiguration:
 
 Main chain generates a block once per 15 seconds, so Inner Ring takes about 
 15-30 seconds to make a notary deposit in main chain after startup. Then 
-neofs-dev-env is ready to work.
+frostfs-dev-env is ready to work.
