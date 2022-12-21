@@ -44,14 +44,14 @@ network map.
 3. Enable helper commands
 
 To enable helper commands such as `make tick.epoch` or `make update.epoch_duration`
-make sure to export non-empty `NEOFS_NOTARY_DISABLED` environment variable. 
+make sure to export non-empty `FROSTFS_NOTARY_DISABLED` environment variable. 
 ```
-$ export NEOFS_NOTARY_DISABLED=1
+$ export FROSTFS_NOTARY_DISABLED=1
 ```
 
 Use `unset` command to return it back.
 ```
-$ unset NEOFS_NOTARY_DISABLED
+$ unset FROSTFS_NOTARY_DISABLED
 ```
 
 # Enable notary service in main chain

@@ -2,7 +2,7 @@
 
 version: "2.4"
 services:
-  neofs_main_chain:
+  frostfs_main_chain:
     image: ${NEOGO_IMAGE}:${NEOGO_VERSION}
     container_name: main_chain
     command: ["node", "--config-path", "/config", "--privnet", "--debug"]

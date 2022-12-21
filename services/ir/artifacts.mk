@@ -1,44 +1,44 @@
-# Get NeoFS IR artifacts (LOCODE database and NeoFS CLI)
+# Get FrostFS IR artifacts (LOCODE database and FrostFS CLI)
 
 LOCODE_DB_ARCHIVE_PATH=./vendor
 LOCODE_DB_ARCHIVE_FILE=locode_db.gz
 
 get.ir: get.locode get.cli
 
-# Get NeoFS LOCODE database
+# Get FrostFS LOCODE database
 get.locode: LOCODE_DB_PATH?= 
 get.locode:
 	@mkdir -p ${LOCODE_DB_ARCHIVE_PATH}
 
 ifeq (${LOCODE_DB_PATH},)
-	@echo "⇒ Download NeoFS LOCODE database from ${LOCODE_DB_URL}"
+	@echo "⇒ Download FrostFS LOCODE database from ${LOCODE_DB_URL}"
 	@curl \
 		-sSL "${LOCODE_DB_URL}" \
 		-o ${LOCODE_DB_ARCHIVE_PATH}/${LOCODE_DB_ARCHIVE_FILE}
 else
-	@echo "⇒ Copy local archive of NeoFS LOCODE database from ${LOCODE_DB_PATH}"
+	@echo "⇒ Copy local archive of FrostFS LOCODE database from ${LOCODE_DB_PATH}"
 	@cp ${LOCODE_DB_PATH} ${LOCODE_DB_ARCHIVE_PATH}/${LOCODE_DB_ARCHIVE_FILE}
 endif
 
 	gzip -dfk ${LOCODE_DB_ARCHIVE_PATH}/${LOCODE_DB_ARCHIVE_FILE}
 
-# Download NeoFS CLI 
+# Download FrostFS CLI 
 .ONESHELL:
-get.cli: NEOFS_CLI_FILE=./vendor/neofs-cli
-get.cli: NEOFS_CLI_ARCHIVE_FILE=${NEOFS_CLI_FILE}.tar.gz
-get.cli: NEOFS_CLI_PATH?=
+get.cli: FROSTFS_CLI_FILE=./vendor/frostfs-cli
+get.cli: FROSTFS_CLI_ARCHIVE_FILE=${FROSTFS_CLI_FILE}.tar.gz
+get.cli: FROSTFS_CLI_PATH?=
 get.cli:
 	@mkdir -p ./vendor
 
-ifeq (${NEOFS_CLI_PATH},)
-	@echo "⇒ Download NeoFS CLI binary from ${NEOFS_CLI_URL}"
+ifeq (${FROSTFS_CLI_PATH},)
+	@echo "⇒ Download FrostFS CLI binary from ${FROSTFS_CLI_URL}"
 	@curl \
-		-sSL "${NEOFS_CLI_URL}" \
-		-o ${NEOFS_CLI_ARCHIVE_FILE} 
-	@tar -xvf ${NEOFS_CLI_ARCHIVE_FILE} -C ./vendor | xargs -I {} \
-		mv ./vendor/{} ${NEOFS_CLI_FILE}
-	@rm ${NEOFS_CLI_ARCHIVE_FILE}
+		-sSL "${FROSTFS_CLI_URL}" \
+		-o ${FROSTFS_CLI_ARCHIVE_FILE} 
+	@tar -xvf ${FROSTFS_CLI_ARCHIVE_FILE} -C ./vendor | xargs -I {} \
+		mv ./vendor/{} ${FROSTFS_CLI_FILE}
+	@rm ${FROSTFS_CLI_ARCHIVE_FILE}
 else
-	@echo "⇒ Copy local binary from ${NEOFS_CLI_PATH}"
-	@cp ${NEOFS_CLI_PATH} ${NEOFS_CLI_FILE}
+	@echo "⇒ Copy local binary from ${FROSTFS_CLI_PATH}"
+	@cp ${FROSTFS_CLI_PATH} ${FROSTFS_CLI_FILE}
 endif

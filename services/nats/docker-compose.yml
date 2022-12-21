@@ -16,13 +16,13 @@ services:
         ipv4_address: ${IPV4_PREFIX}.101
     volumes:
       - ./../../vendor/hosts:/etc/hosts
-      - ./nats.conf:/etc/nats/neofs-nats-server.conf
+      - ./nats.conf:/etc/nats/frostfs-nats-server.conf
       - ./server-cert.pem:/certs/server-cert.pem
       - ./server-key.pem:/certs/server-key.pem
       - ./ca-cert.pem:/certs/ca-cert.pem
     stop_signal: SIGKILL
     env_file: [ ".env", ".int_test.env" ]
-    command: ["-c", "/etc/nats/neofs-nats-server.conf"]
+    command: ["-c", "/etc/nats/frostfs-nats-server.conf"]
 
 networks:
   nats_int:

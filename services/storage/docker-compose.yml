@@ -16,13 +16,13 @@ services:
       - ./wallet01.json:/wallet.json
       - ./../../vendor/hosts:/etc/hosts
       - storage_s01:/storage
-      - ./../../vendor/neofs-cli:/neofs-cli
+      - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./cli-cfg.yml:/cli-cfg.yml
       - ./healthcheck.sh:/healthcheck.sh
       - ./s04tls.crt:/etc/ssl/certs/s04tls.crt
-      - ../nats/client-cert.pem:/etc/neofs-node/nats.tls.cert
-      - ../nats/client-key.pem:/etc/neofs-node/nats.tls.key
-      - ../nats/ca-cert.pem:/etc/neofs-node/nats.ca.crt
+      - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
+      - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
+      - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     environment:
@@ -54,13 +54,13 @@ services:
       - ./wallet02.json:/wallet.json
       - ./../../vendor/hosts:/etc/hosts
       - storage_s02:/storage
-      - ./../../vendor/neofs-cli:/neofs-cli
+      - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./cli-cfg.yml:/cli-cfg.yml
       - ./healthcheck.sh:/healthcheck.sh
       - ./s04tls.crt:/etc/ssl/certs/s04tls.crt
-      - ../nats/client-cert.pem:/etc/neofs-node/nats.tls.cert
-      - ../nats/client-key.pem:/etc/neofs-node/nats.tls.key
-      - ../nats/ca-cert.pem:/etc/neofs-node/nats.ca.crt
+      - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
+      - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
+      - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     environment:
@@ -92,13 +92,13 @@ services:
       - ./wallet03.json:/wallet.json
       - ./../../vendor/hosts:/etc/hosts
       - storage_s03:/storage
-      - ./../../vendor/neofs-cli:/neofs-cli
+      - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./cli-cfg.yml:/cli-cfg.yml
       - ./healthcheck.sh:/healthcheck.sh
       - ./s04tls.crt:/etc/ssl/certs/s04tls.crt
-      - ../nats/client-cert.pem:/etc/neofs-node/nats.tls.cert
-      - ../nats/client-key.pem:/etc/neofs-node/nats.tls.key
-      - ../nats/ca-cert.pem:/etc/neofs-node/nats.ca.crt
+      - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
+      - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
+      - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     environment:
@@ -130,14 +130,14 @@ services:
       - ./wallet04.json:/wallet.json
       - ./../../vendor/hosts:/etc/hosts
       - storage_s04:/storage
-      - ./../../vendor/neofs-cli:/neofs-cli
+      - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./cli-cfg.yml:/cli-cfg.yml
       - ./healthcheck.sh:/healthcheck.sh
       - ./s04tls.crt:/tls.crt
       - ./s04tls.key:/tls.key
-      - ../nats/client-cert.pem:/etc/neofs-node/nats.tls.cert
-      - ../nats/client-key.pem:/etc/neofs-node/nats.tls.key
-      - ../nats/ca-cert.pem:/etc/neofs-node/nats.ca.crt
+      - ../nats/client-cert.pem:/etc/frostfs-node/nats.tls.cert
+      - ../nats/client-key.pem:/etc/frostfs-node/nats.tls.key
+      - ../nats/ca-cert.pem:/etc/frostfs-node/nats.ca.crt
     stop_signal: SIGKILL
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     environment:

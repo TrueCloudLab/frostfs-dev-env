@@ -41,17 +41,6 @@ ApplicationConfiguration:
   UnlockWallet:
     Path: "./wallets/node-wallet.json"
     Password: "one"
-  Oracle:
-    Enabled: true
-    NeoFS:
-      Nodes:
-        - s01.neofs.devenv:8080
-        - s02.neofs.devenv:8080
-        - s03.neofs.devenv:8080
-        - s04.neofs.devenv:8080
-    UnlockWallet:
-      Path: "./wallets/node-wallet.json"
-      Password: "one"
   P2PNotary:
     Enabled: false
     UnlockWallet:

@@ -32,4 +32,4 @@ ${NEOGO} wallet nep17 transfer \
 	--from ${ADDR} --force \
 	--to ${CONTRACT_ADDR} \
 	--token GAS \
-	--amount ${DEPOSIT} || die "Cannot transfer GAS to NeoFS contract"
+	--amount ${DEPOSIT} || die "Cannot transfer GAS to FrostFS contract"

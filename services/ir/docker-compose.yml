@@ -19,7 +19,7 @@ services:
       - ./az.key:/wallet01.key
       - ./../../vendor/hosts:/etc/hosts
       - ./../../vendor/locode_db:/locode/db
-      - ./../../vendor/neofs-cli:/neofs-cli
+      - ./../../vendor/frostfs-cli:/frostfs-cli
       - ./healthcheck.sh:/healthcheck.sh
     env_file: [ ".env", ".ir.env", ".int_test.env" ]
     environment:

@@ -10,8 +10,8 @@ include .env
 # help target
 include help.mk
 
-# update NeoFS global config targets
-include neofs_config.mk
+# update FrostFS global config targets
+include frostfs_config.mk
 
 # Targets to get required artifacts and external resources for each service
 include services/*/artifacts.mk
@@ -61,24 +61,24 @@ get: $(foreach SVC, $(GET_SVCS), get.$(SVC))
 .PHONY: up
 up: up/basic
 	@$(foreach SVC, $(START_SVCS), $(shell docker-compose -f services/$(SVC)/docker-compose.yml up -d))
-	@echo "Full NeoFS Developer Environment is ready"
+	@echo "Full FrostFS Developer Environment is ready"
 
-# Build up NeoFS
+# Build up FrostFS
 .PHONY: up/basic
 up/basic: up/bootstrap
 	@$(foreach SVC, $(START_BASIC), $(shell docker-compose -f services/$(SVC)/docker-compose.yml up -d))
 	@./bin/tick.sh
 	@./bin/config.sh string SystemDNS container
-	@echo "Basic NeoFS Developer Environment is ready"
+	@echo "Basic FrostFS Developer Environment is ready"
 
 # Start bootstrap services
 .PHONY: up/bootstrap
 up/bootstrap: get vendor/hosts
 	@$(foreach SVC, $(START_BOOTSTRAP), $(shell docker-compose -f services/$(SVC)/docker-compose.yml up -d))
 	@source ./bin/helper.sh
-	@./vendor/neofs-adm --config neofs-adm.yml morph init --alphabet-wallets ./services/ir --contracts vendor/contracts || die "Failed to initialize Alphabet wallets"
-	@for f in ./services/storage/wallet*.json; do echo "Transfer GAS to wallet $${f}" && ./vendor/neofs-adm -c neofs-adm.yml morph refill-gas --storage-wallet $${f} --gas 10.0 --alphabet-wallets services/ir || die "Failed to transfer GAS to alphabet wallets"; done
-	@echo "NeoFS sidechain environment is deployed"
+	@./vendor/frostfs-adm --config frostfs-adm.yml morph init --alphabet-wallets ./services/ir --contracts vendor/contracts || die "Failed to initialize Alphabet wallets"
+	@for f in ./services/storage/wallet*.json; do echo "Transfer GAS to wallet $${f}" && ./vendor/frostfs-adm -c frostfs-adm.yml morph refill-gas --storage-wallet $${f} --gas 10.0 --alphabet-wallets services/ir || die "Failed to transfer GAS to alphabet wallets"; done
+	@echo "FrostFS sidechain environment is deployed"
 
 # Build up certain service
 .PHONY: up/%
@@ -89,7 +89,7 @@ up/%: get vendor/hosts
 # Stop environment
 .PHONY: down
 down: down/add down/basic down/bootstrap
-	@echo "Full NeoFS Developer Environment is down"
+	@echo "Full FrostFS Developer Environment is down"
 
 .PHONY: down/add
 down/add:

@@ -1,4 +1,4 @@
-rpc-endpoint: http://morph-chain.neofs.devenv:30333
+rpc-endpoint: http://morph-chain.frostfs.devenv:30333
 network:
   max_object_size: 67108864
   epoch_duration: 240

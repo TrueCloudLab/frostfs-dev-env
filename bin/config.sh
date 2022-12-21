@@ -16,7 +16,7 @@ CONFIG_IMG="${CONFIG_IMG:-/wallets/config.yml}"
 
 NETMAP_ADDR=$(bin/resolve.sh netmap.neofs) || die "Failed to resolve 'netmap.neofs' domain name"
 
-# NeoFS configuration record: variable type [string|int|etc],
+# FrostFS configuration record: variable type [string|int|etc],
 # key is a string and value is a constant of given type
 TYPE=${1}
 KEY=${2}
@@ -27,7 +27,7 @@ VALUE="${3}"
 [ -z "$VALUE" ] && echo "Empty config value" && exit 1
 
 # Internal variables
-if [[ -z "${NEOFS_NOTARY_DISABLED}" ]]; then
+if [[ -z "${FROSTFS_NOTARY_DISABLED}" ]]; then
   ADDR=$(jq -r .accounts[2].address < "${WALLET}" || die "Cannot get address from ${WALLET}")
 else
   ADDR=$(jq -r .accounts[0].address < "${WALLET}" || die "Cannot get address from ${WALLET}")

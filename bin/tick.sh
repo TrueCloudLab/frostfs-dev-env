@@ -15,7 +15,7 @@ WALLET="${WALLET:-services/chain/node-wallet.json}"
 CONFIG_IMG="${CONFIG_IMG:-/wallets/config.yml}"
 
 # Internal variables
-if [[ -z "${NEOFS_NOTARY_DISABLED}" ]]; then
+if [[ -z "${FROSTFS_NOTARY_DISABLED}" ]]; then
   ADDR=$(jq -r .accounts[2].address < "${WALLET}" || die "Cannot get address from ${WALLET}")
 else
   ADDR=$(jq -r .accounts[0].address < "${WALLET}" || die "Cannot get address from ${WALLET}")
@@ -33,7 +33,7 @@ EPOCH=$(${NEOGO} contract testinvokefunction \
 	| grep 'value' | awk -F'"' '{ print $4 }') \
 	|| die "Cannot fetch epoch from netmap contract"
 
-echo "Updating NeoFS epoch to $((EPOCH+1))"
+echo "Updating FrostFS epoch to $((EPOCH+1))"
 
 # shellcheck disable=SC2086
 ${NEOGO} contract invokefunction \
