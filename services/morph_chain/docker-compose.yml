@@ -2,7 +2,7 @@
 
 version: "2.4"
 services:
-  neofs_morph_chain:
+  frostfs_morph_chain:
     image: ${NEOGO_IMAGE}:${NEOGO_VERSION}
     container_name: morph_chain
     command: ["node", "--config-path", "/config", "--privnet", "--debug"]
@@ -17,6 +17,7 @@ services:
     volumes:
     - ./protocol.privnet.yml:/config/protocol.privnet.yml
     - ./node-wallet.json:/wallets/node-wallet.json
+    - ./config.yml:/wallets/config.yml
     - ./../../vendor/hosts:/etc/hosts
     - ./../../wallets/wallet.json:/wallets/wallet.json
 

@@ -8,10 +8,10 @@ echo "Running bin/tick.sh"
 source bin/helper.sh
 
 # NeoGo binary path.
-NEOGO="${NEOGO:-docker exec main_chain neo-go}"
+NEOGO="${NEOGO:-docker exec morph_chain neo-go}"
 
 # Wallet files to change config value
-WALLET="${WALLET:-services/chain/node-wallet.json}"
+WALLET="${WALLET:-services/morph_chain/node-wallet.json}"
 CONFIG_IMG="${CONFIG_IMG:-/wallets/config.yml}"
 
 # Internal variables
