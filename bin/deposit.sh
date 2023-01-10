@@ -18,11 +18,11 @@ DEPOSIT="${1:-50}"
 # Internal variables
 ADDR=$(jq -r .accounts[0].address < "${WALLET}" \
 	|| die "Cannot get address from wallet: ${WALLET}")
-CONTRACT_ADDR=$(${NEOGO} util convert "${NEOFS_IR_CONTRACTS_NEOFS}" \
+CONTRACT_ADDR=$(${NEOGO} util convert "${NEOFS_IR_CONTRACTS_FROSTFS}" \
 	| grep 'LE ScriptHash to Address' \
 	| awk '{print $5}' \
 	| grep -oP "[A-z0-9]+" \
-	|| die "Cannot parse contract address: ${NEOFS_IR_CONTRACTS_NEOFS}")
+	|| die "Cannot parse contract address: ${NEOFS_IR_CONTRACTS_FROSTFS}")
 
 # Make deposit
 # shellcheck disable=SC2086

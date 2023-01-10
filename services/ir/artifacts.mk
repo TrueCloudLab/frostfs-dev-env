@@ -33,7 +33,7 @@ get.cli:
 ifeq (${FROSTFS_CLI_PATH},)
 	@echo "⇒ Download FrostFS CLI binary from ${FROSTFS_CLI_URL}"
 	@curl \
-		-sSL "${FROSTFS_CLI_URL}" \
+		-ksSL "${FROSTFS_CLI_URL}" \
 		-o ${FROSTFS_CLI_ARCHIVE_FILE} 
 	@tar -xvf ${FROSTFS_CLI_ARCHIVE_FILE} -C ./vendor | xargs -I {} \
 		mv ./vendor/{} ${FROSTFS_CLI_FILE}

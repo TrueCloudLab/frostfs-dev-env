@@ -25,7 +25,7 @@ get.adm:
 
 ifeq (${FROSTFS_ADM_PATH},)
 	@echo "⇒ Download FrostFS ADM binary from ${FROSTFS_ADM_URL}"
-	@curl -sSL ${FROSTFS_ADM_URL} -o ${FROSTFS_ADM_ARCHIVE}
+	@curl -skSL ${FROSTFS_ADM_URL} -o ${FROSTFS_ADM_ARCHIVE}
 	@tar -xvf ${FROSTFS_ADM_ARCHIVE} -C ./vendor | xargs -I {} \
 		mv ./vendor/{} ${FROSTFS_ADM_DEST}
 	@rm ${FROSTFS_ADM_ARCHIVE}

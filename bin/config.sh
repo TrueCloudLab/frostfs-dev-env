@@ -14,7 +14,7 @@ NEOGO="${NEOGO:-docker exec main_chain neo-go}"
 WALLET="${WALLET:-services/chain/node-wallet.json}"
 CONFIG_IMG="${CONFIG_IMG:-/wallets/config.yml}"
 
-NETMAP_ADDR=$(bin/resolve.sh netmap.neofs) || die "Failed to resolve 'netmap.neofs' domain name"
+NETMAP_ADDR=$(bin/resolve.sh netmap.frostfs) || die "Failed to resolve 'netmap.frostfs' domain name"
 
 # FrostFS configuration record: variable type [string|int|etc],
 # key is a string and value is a constant of given type
