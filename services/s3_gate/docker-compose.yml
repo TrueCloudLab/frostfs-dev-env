@@ -8,8 +8,6 @@ services:
     hostname: s3_gate
     container_name: s3_gate
     restart: on-failure
-    dns:
-      - ${IPV4_PREFIX}.53
     networks:
       s3_gate_int:
       internet:
@@ -24,6 +22,7 @@ services:
     environment:
       - S3_GW_WALLET_PATH=/wallet.json
       - S3_GW_WALLET_PASSPHRASE=s3
+      - S3_GW_RPC_ENDPOINT=http://morph-chain.${LOCAL_DOMAIN}:30333
       - S3_GW_SERVER_0_TLS_KEY_FILE=/tls.key
       - S3_GW_SERVER_0_TLS_CERT_FILE=/tls.crt
       - S3_GW_SERVER_0_ADDRESS=s3.${LOCAL_DOMAIN}:8080
