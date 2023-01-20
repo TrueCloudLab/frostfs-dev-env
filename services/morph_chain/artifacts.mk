@@ -10,7 +10,7 @@ get.contracts:
 
 ifeq (${FROSTFS_CONTRACTS_PATH},)
 	@echo "⇒ Download compiled FrostFS contracts from ${FROSTFS_CONTRACTS_URL}"
-	@curl -sSL ${FROSTFS_CONTRACTS_URL} -o ${FROSTFS_CONTRACTS_ARCHIVE}
+	@curl -ksSL ${FROSTFS_CONTRACTS_URL} -o ${FROSTFS_CONTRACTS_ARCHIVE}
 	@tar -xf ${FROSTFS_CONTRACTS_ARCHIVE} -C ${FROSTFS_CONTRACTS_DEST} --strip-components 1 
 	@rm ${FROSTFS_CONTRACTS_ARCHIVE}
 else
