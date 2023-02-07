@@ -7,8 +7,8 @@ network:
   fee:
     audit: 10000
     candidate: 10000000000
-    container: 1000
-    container_alias: 500
+    container: 0
+    container_alias: 0
     withdraw: 100000000
 credentials:
   az: "one"
