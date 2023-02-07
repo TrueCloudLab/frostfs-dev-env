@@ -28,13 +28,13 @@ services:
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
-      - NEOFS_NODE_WALLET_PATH=./wallet.json
-      - NEOFS_NODE_WALLET_PASSWORD=
-      - NEOFS_NODE_ADDRESSES=s01.${LOCAL_DOMAIN}:8080
-      - NEOFS_GRPC_0_ENDPOINT=s01.${LOCAL_DOMAIN}:8080
-      - NEOFS_CONTROL_GRPC_ENDPOINT=s01.${LOCAL_DOMAIN}:8081
-      - NEOFS_NODE_ATTRIBUTE_1=UN-LOCODE:RU MOW
-      - NEOFS_NODE_ATTRIBUTE_2=Price:22
+      - FROSTFS_NODE_WALLET_PATH=./wallet.json
+      - FROSTFS_NODE_WALLET_PASSWORD=
+      - FROSTFS_NODE_ADDRESSES=s01.${LOCAL_DOMAIN}:8080
+      - FROSTFS_GRPC_0_ENDPOINT=s01.${LOCAL_DOMAIN}:8080
+      - FROSTFS_CONTROL_GRPC_ENDPOINT=s01.${LOCAL_DOMAIN}:8081
+      - FROSTFS_NODE_ATTRIBUTE_1=UN-LOCODE:RU MOW
+      - FROSTFS_NODE_ATTRIBUTE_2=Price:22
     healthcheck:
       test: ["CMD-SHELL", "/healthcheck.sh"]
       interval: 2s
@@ -68,13 +68,13 @@ services:
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
-      - NEOFS_NODE_WALLET_PATH=./wallet.json
-      - NEOFS_NODE_WALLET_PASSWORD=
-      - NEOFS_NODE_ADDRESSES=s02.${LOCAL_DOMAIN}:8080
-      - NEOFS_GRPC_0_ENDPOINT=s02.${LOCAL_DOMAIN}:8080
-      - NEOFS_CONTROL_GRPC_ENDPOINT=s02.${LOCAL_DOMAIN}:8081
-      - NEOFS_NODE_ATTRIBUTE_1=UN-LOCODE:RU LED
-      - NEOFS_NODE_ATTRIBUTE_2=Price:33
+      - FROSTFS_NODE_WALLET_PATH=./wallet.json
+      - FROSTFS_NODE_WALLET_PASSWORD=
+      - FROSTFS_NODE_ADDRESSES=s02.${LOCAL_DOMAIN}:8080
+      - FROSTFS_GRPC_0_ENDPOINT=s02.${LOCAL_DOMAIN}:8080
+      - FROSTFS_CONTROL_GRPC_ENDPOINT=s02.${LOCAL_DOMAIN}:8081
+      - FROSTFS_NODE_ATTRIBUTE_1=UN-LOCODE:RU LED
+      - FROSTFS_NODE_ATTRIBUTE_2=Price:33
     healthcheck:
       test: ["CMD-SHELL", "/healthcheck.sh"]
       interval: 2s
@@ -108,13 +108,13 @@ services:
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
-      - NEOFS_NODE_WALLET_PATH=./wallet.json
-      - NEOFS_NODE_WALLET_PASSWORD=
-      - NEOFS_NODE_ADDRESSES=s03.${LOCAL_DOMAIN}:8080
-      - NEOFS_GRPC_0_ENDPOINT=s03.${LOCAL_DOMAIN}:8080
-      - NEOFS_CONTROL_GRPC_ENDPOINT=s03.${LOCAL_DOMAIN}:8081
-      - NEOFS_NODE_ATTRIBUTE_1=UN-LOCODE:SE STO
-      - NEOFS_NODE_ATTRIBUTE_2=Price:11
+      - FROSTFS_NODE_WALLET_PATH=./wallet.json
+      - FROSTFS_NODE_WALLET_PASSWORD=
+      - FROSTFS_NODE_ADDRESSES=s03.${LOCAL_DOMAIN}:8080
+      - FROSTFS_GRPC_0_ENDPOINT=s03.${LOCAL_DOMAIN}:8080
+      - FROSTFS_CONTROL_GRPC_ENDPOINT=s03.${LOCAL_DOMAIN}:8081
+      - FROSTFS_NODE_ATTRIBUTE_1=UN-LOCODE:SE STO
+      - FROSTFS_NODE_ATTRIBUTE_2=Price:11
     healthcheck:
       test: ["CMD-SHELL", "/healthcheck.sh"]
       interval: 2s
@@ -149,18 +149,18 @@ services:
     env_file: [ ".env", ".storage.env", ".int_test.env" ]
     command: [ "frostfs-node", "--config", "/etc/frostfs/storage/config.yml" ]
     environment:
-      - NEOFS_NODE_WALLET_PATH=./wallet.json
-      - NEOFS_NODE_WALLET_PASSWORD=
-      - NEOFS_NODE_ADDRESSES=s04.${LOCAL_DOMAIN}:8080 grpcs://s04.${LOCAL_DOMAIN}:8082
-      - NEOFS_CONTROL_GRPC_ENDPOINT=s04.${LOCAL_DOMAIN}:8081
-      - NEOFS_GRPC_NUM=2
-      - NEOFS_GRPC_0_ENDPOINT=s04.${LOCAL_DOMAIN}:8080
-      - NEOFS_GRPC_1_ENDPOINT=s04.${LOCAL_DOMAIN}:8082
-      - NEOFS_GRPC_1_TLS_ENABLED=true
-      - NEOFS_GRPC_1_TLS_CERTIFICATE=/tls.crt
-      - NEOFS_GRPC_1_TLS_KEY=/tls.key
-      - NEOFS_NODE_ATTRIBUTE_1=UN-LOCODE:FI HEL
-      - NEOFS_NODE_ATTRIBUTE_2=Price:44
+      - FROSTFS_NODE_WALLET_PATH=./wallet.json
+      - FROSTFS_NODE_WALLET_PASSWORD=
+      - FROSTFS_NODE_ADDRESSES=s04.${LOCAL_DOMAIN}:8080 grpcs://s04.${LOCAL_DOMAIN}:8082
+      - FROSTFS_CONTROL_GRPC_ENDPOINT=s04.${LOCAL_DOMAIN}:8081
+      - FROSTFS_GRPC_NUM=2
+      - FROSTFS_GRPC_0_ENDPOINT=s04.${LOCAL_DOMAIN}:8080
+      - FROSTFS_GRPC_1_ENDPOINT=s04.${LOCAL_DOMAIN}:8082
+      - FROSTFS_GRPC_1_TLS_ENABLED=true
+      - FROSTFS_GRPC_1_TLS_CERTIFICATE=/tls.crt
+      - FROSTFS_GRPC_1_TLS_KEY=/tls.key
+      - FROSTFS_NODE_ATTRIBUTE_1=UN-LOCODE:FI HEL
+      - FROSTFS_NODE_ATTRIBUTE_2=Price:44
     healthcheck:
       test: ["CMD-SHELL", "/healthcheck.sh"]
       interval: 2s
